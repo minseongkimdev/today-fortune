@@ -1,0 +1,24 @@
+{
+  "name": "today-fortune-crawl",
+  "version": "1.0.0",
+  "description": "Today's fortune crawler",
+  "main": "crawl.ts",
+  "scripts": {
+    "start": "ts-node crawl.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "node-fetch": "^2.6.1",
+    "htmlparser2": "^8.0.2",
+    "domutils": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/node-fetch": "^2.6.1",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.1"
+  }
+}
