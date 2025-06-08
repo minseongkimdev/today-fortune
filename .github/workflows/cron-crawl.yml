@@ -2,7 +2,7 @@ name: Scheduled Crawl
 
 on:
   schedule:
-    - cron: '0 9 * * *'  # 매일 오전 9시 UTC (KST 18시)
+    - cron: '0 9 * * *'
   workflow_dispatch:
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
 
       - name: Run crawler
         run: |
-          mkdir -p output  # output 디렉토리 보장
+          mkdir -p output
           node crawl.js
 
       - name: Commit and push output
@@ -34,6 +34,5 @@ jobs:
           git add output/
           git commit -m "📦 Update output from scheduled crawl ($(date -u))" || echo "No changes to commit"
           git push origin HEAD
-
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
