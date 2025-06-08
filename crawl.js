@@ -58,6 +58,19 @@ const getKoreanDate = () => {
     }
 }
 
+const parseBirthYearFortunes = (text) => {
+    const fortunes = {}
+    const matches = text.matchAll(/(\d{2})년생\s+([^.]+)\./g)
+    
+    for (const match of matches) {
+        const year = match[1]
+        const fortune = match[2].trim()
+        fortunes[year] = fortune
+    }
+    
+    return fortunes
+}
+
 const parseFortune = (text) => {
     // Split text by multiple spaces
     const parts = text.split(/\s{2,}/).filter(part => part.trim())
@@ -77,6 +90,9 @@ const parseFortune = (text) => {
     // Get content (나머지 부분)
     const content = parts.slice(1).join('   ')
 
+    // Parse birth year fortunes if content contains them
+    const birthYearFortunes = parseBirthYearFortunes(content)
+
     // Convert Korean animal name to enum
     const animalKey = Object.entries(ANIMALS).find(([, value]) => value === animal)?.[0]
     if (!animalKey) {
@@ -89,7 +105,8 @@ const parseFortune = (text) => {
         건강: health.trim(),
         사랑: love.trim(),
         길방: direction.trim(),
-        본문: content.trim()
+        본문: content.trim(),
+        년생운세: birthYearFortunes
     }
 }
 
