@@ -30,7 +30,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
-          git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }}
+          git remote set-url origin https://x-access-token:$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}@github.com/${{ github.repository }}
           git add output/
           git commit -m "📦 Update output from scheduled crawl ($(date -u))" || echo "No changes to commit"
           git push origin HEAD
